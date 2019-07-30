@@ -1,0 +1,8 @@
+#ship {
+    background-color: green;
+    position: fixed;
+    width: 50px;
+    height: 90px;
+    bottom: 30px;
+    left: calc(50% - 25px);
+}
