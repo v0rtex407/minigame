@@ -5,6 +5,7 @@
     height: 90px;
     bottom: 30px;
     left: calc(50% - 25px);
+    touch-action: manipulation;
 }
 
 @media screen and (max-device-width:1000px) {
