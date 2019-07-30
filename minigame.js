@@ -10,4 +10,5 @@ window.onload = () => {
         b.style.transition = "left 0.07s linear"
     }
     window.oncontextmenu = e => e.preventDefault()
+    b.oncontextmenu = e => e.preventDefault()
 }
