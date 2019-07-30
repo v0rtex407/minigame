@@ -10,12 +10,3 @@ body {
     bottom: 30px;
     left: calc(50% - 25px);
 }
-
-@media screen and (max-device-width:1000px) {
-    div#ship {
-        width: 150px;
-        height: 270px;
-        bottom: 60px;
-        left: calc(50% - 75px);
-    }
-}
