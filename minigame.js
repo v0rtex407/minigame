@@ -3,11 +3,11 @@ window.onload = () => {
     window.onmousemove = e => b.style.left = (e.pageX - 25) + "px"
     window.ontouchmove = e => {
         b.style.transition = ""
-        b.style.left = (e.pageX - 25) + "px"
+        b.style.left = (e.pageX - 75) + "px"
     }
     window.ontouchstart = e => {
-        b.style.left = (e.pageX - 25) + "px"
-        b.style.transition = "left 0.08s linear"
+        b.style.left = (e.pageX - 75) + "px"
+        b.style.transition = "left 0.07s linear"
     }
-    b.oncontextmenu = e => e.preventDefault()
+    window.oncontextmenu = e => e.preventDefault()
 }
