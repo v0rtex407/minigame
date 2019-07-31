@@ -10,3 +10,12 @@ body {
     bottom: 30px;
     touch-action: manipulation;
 }
+
+.laser {
+    position:fixed;
+    left:calc(50% - 10px);
+    background-color:red;
+    width:20px;
+    height:60px;
+    z-index:-2
+}
