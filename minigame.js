@@ -11,17 +11,6 @@ window.onload = () => {
     }
     b.oncontextmenu = e => e.preventDefault()
     window.oncontextmenu = e => e.preventDefault()
-    const laser = () => {
-        let c = document.createElement("div")
-        c.className = "laser"
-        document.body.appendChild(c)
-        let d = parseFloat(b.style.left) + 15
-        c.style.left = d + "px"
-        c.style.bottom = "44px"
-        const move = () => c.style.bottom = (parseFloat(c.style.bottom) + 6) + "px"
-        setInterval(move, 1)
-    }
-    setInterval(laser, 600)
     let slot = ["16.66% - 58.33px", "33.32% - 46.66px", "49.98% - 34.99px", "66.64% - 23.32px", "83.3% - 11.65px"]
     let track = []
     const enemy = () => {
@@ -37,4 +26,29 @@ window.onload = () => {
         setInterval(fall, 1)
     }
     setInterval(enemy, 1800)
+    const laser = () => {
+        let c = document.createElement("div")
+        c.className = "laser"
+        document.body.appendChild(c)
+        let d = parseFloat(b.style.left) + 15
+        c.style.left = d + "px"
+        c.style.bottom = "44px"
+        const move = () => {
+            let enemy = document.getElementsByClassName("enemy")
+            c.style.bottom = (parseFloat(c.style.bottom) + 6) + "px"
+            for (let x of enemy) {
+                if ((parseFloat(x.style.top) + parseFloat(c.style.bottom) + 120) >= window.innerHeight && (c.offsetLeft >= x.offsetLeft - 20 && c.offsetLeft <= x.offsetLeft + 70)) {
+                    document.body.removeChild(x)
+                    document.body.removeChild(c)
+                    clearInterval(t)
+                }
+            }
+            if (parseFloat(c.style.bottom) >= window.innerHeight) {
+                document.body.removeChild(c)
+                clearInterval(t)
+            }
+        }
+        let t = setInterval(move, 1)
+    }
+    setInterval(laser, 600)
 }
