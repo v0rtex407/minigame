@@ -22,8 +22,19 @@ window.onload = () => {
         setInterval(move, 1)
     }
     setInterval(laser, 600)
+    let slot = ["16.66% - 58.33px", "33.32% - 46.66px", "49.98% - 34.99px", "66.64% - 23.32px", "83.3% - 11.65px"]
+    let track = []
     const enemy = () => {
         let c = document.createElement("div")
         document.body.appendChild(c)
+        c.className = "enemy"
+        c.style.top = "-70px";
+        let y = slot[Math.round(Math.random() * 4)]
+        if (track[track.length - 1] == y) y = slot.filter(x => x != y)[Math.round(Math.random() * 3)]
+        c.style.left = `calc(${y})`
+        track.push(y)
+        const fall = () => c.style.top = (parseFloat(c.style.top) + 1) + "px";
+        setInterval(fall, 1)
     }
+    setInterval(enemy, 1800)
 }

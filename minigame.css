@@ -19,3 +19,10 @@ body {
     height:60px;
     z-index:-2
 }
+
+.enemy {
+    position:fixed;
+    background-color:blue;
+    width:70px;
+    height:70px;
+}
