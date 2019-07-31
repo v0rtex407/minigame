@@ -25,7 +25,7 @@ window.onload = () => {
         const fall = () => c.style.top = (parseFloat(c.style.top) + 1) + "px";
         setInterval(fall, 1)
     }
-    setInterval(enemy, 1800)
+    setInterval(enemy, 1500)
     const laser = () => {
         let c = document.createElement("div")
         c.className = "laser"
