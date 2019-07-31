@@ -38,7 +38,8 @@ window.onload = () => {
             c.style.bottom = (parseFloat(c.style.bottom) + 6) + "px"
             for (let x of enemy) {
                 if ((parseFloat(x.style.top) + parseFloat(c.style.bottom) + 120) >= window.innerHeight && (c.offsetLeft >= x.offsetLeft - 20 && c.offsetLeft <= x.offsetLeft + 70)) {
-                    document.body.removeChild(x)
+                    if (x.style.opacity == 0.5) document.body.removeChild(x)
+                    else x.style.opacity = 0.5
                     document.body.removeChild(c)
                     clearInterval(t)
                 }
