@@ -10,6 +10,7 @@ window.onload = () => {
         b.style.transition = "left 0.07s linear"
     }
     b.oncontextmenu = e => e.preventDefault()
+    window.oncontextmenu = e => e.preventDefault()
     const laser = () => {
         let c = document.createElement("div")
         c.className = "laser"
