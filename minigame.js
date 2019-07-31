@@ -13,7 +13,7 @@ window.onload = () => {
     let start = 0
     const laser = (time) => {
         let c = document.createElement("div")
-        if (start == 0 || time >= start + 500) {
+        if (start == 0 || time >= start + 600) {
             start = time
             document.body.appendChild(c)
             let d = parseFloat(b.style.left) + 15
