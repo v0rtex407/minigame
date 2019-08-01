@@ -1,26 +1,15 @@
 window.onload = () => {
     let b = document.getElementById("ship")
     window.onmousemove = e => b.style.left = (e.pageX - 25) + "px"
-    const touchmove = e => {
+    window.ontouchmove = e => {
+        if (b.style.transition == "opacity 1s ease 0s, left 0.07s linear 0s" || b.style.transition == "left 0.07s linear 0s, opacity 1s ease 0s") b.style.transition = "opacity 1s ease 0s"
+        else b.style.transition = ""
         b.style.left = (e.pageX - 25) + "px"
-        const moveShi = () => {
-            if (b.style.transition == "left 0.07s linear 0s") b.style.transition = ""
-            else if (b.style.transition == "opacity 1s ease 0s, left 0.07s linear 0s" || b.style.transition == "left 0.07s linear 0s, opacity 1s ease 0s") b.style.transition = "opacity 1s ease 0s"
-            b.removeEventListener("transitionend", moveShi)
-        }
-        b.addEventListener("transitionend", moveShi, true)
     }
-    window.addEventListener("touchmove", touchmove, true)
     window.ontouchstart = e => {
         b.style.left = (e.pageX - 25) + "px"
         if (b.style.transition == "") b.style.transition = "left 0.07s linear 0s"
         else if (b.style.transition == "opacity 1s ease 0s") b.style.transition = "opacity 1s ease 0s, left 0.07s linear 0s"
-        const moveShip = () => {
-            if (b.style.transition == "left 0.07s linear 0s") b.style.transition = ""
-            else if (b.style.transition == "opacity 1s ease 0s, left 0.07s linear 0s" || b.style.transition == "left 0.07s linear 0s, opacity 1s ease 0s") b.style.transition = "opacity 1s ease 0s"
-            b.removeEventListener("transitionend", moveShip)
-        }
-        b.addEventListener("transitionend", moveShip, true)
     }
     b.oncontextmenu = e => e.preventDefault()
     b.firstChild.oncontextmenu = e => e.preventDefault()
