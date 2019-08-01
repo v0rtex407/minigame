@@ -71,7 +71,7 @@ window.onload = () => {
         }
         setInterval(fall, 1)
     }
-    setInterval(enemy, 1500)
+    setInterval(enemy, 1400)
     const laser = () => {
         let c = document.createElement("div")
         c.className = "laser"
