@@ -22,7 +22,68 @@ window.onload = () => {
         if (track[track.length - 1] == y) y = slot.filter(x => x != y)[Math.round(Math.random() * 3)]
         c.style.left = `calc(${y})`
         track.push(y)
-        const fall = () => c.style.top = (parseFloat(c.style.top) + 1) + "px";
+        const fall = () => {
+            c.style.top = (parseFloat(c.style.top) + 1.2) + "px";
+            if ((b.offsetTop <= c.offsetTop + 70 && b.offsetTop + 90 >= c.offsetTop) && (b.offsetLeft >= c.offsetLeft - 50 && b.offsetLeft <= c.offsetLeft + 70)) {
+                if (b.firstChild.getAttribute("src") == "3lives.png" && b.style.transition != "opacity 1s ease 0s") {
+                    b.firstChild.src = "2lives.png";
+                    c.setAttribute("value", "1")
+                    b.style.transition = "opacity 1s ease 0s"
+                    b.style.opacity = "0.5"
+                    const glow = () => {
+                        b.style.opacity = "1"
+                        b.removeEventListener("transitionend", glow)
+                        const glow2 = () => {
+                            b.style.opacity = "0.5"
+                            b.removeEventListener("transitionend", glow2)
+                            const glow3 = () => {
+                                b.style.opacity = "1"
+                                b.removeEventListener("transitionend", glow3)
+                                const glow4 = () => {
+                                    b.style.transition = ""
+                                    c.value = "0"
+                                    b.removeEventListener("transitionend", glow4)
+                                }
+                                b.addEventListener("transitionend", glow4)
+                            }
+                            b.addEventListener("transitionend", glow3)
+                        }
+                        b.addEventListener("transitionend", glow2)
+                    }
+                    b.addEventListener("transitionend", glow)
+                } else if (b.firstChild.getAttribute("src") == "2lives.png" && c.getAttribute("value") != "1" && b.style.transition != "opacity 1s ease 0s") {
+                    b.firstChild.src = "1life.png"
+                    c.setAttribute("value", "1")
+                    b.style.transition = "opacity 1s ease 0s"
+                    b.style.opacity = "0.5"
+                    const glow = () => {
+                        b.style.opacity = "1"
+                        b.removeEventListener("transitionend", glow)
+                        const glow2 = () => {
+                            b.style.opacity = "0.5"
+                            b.removeEventListener("transitionend", glow2)
+                            const glow3 = () => {
+                                b.style.opacity = "1"
+                                b.removeEventListener("transitionend", glow3)
+                                const glow4 = () => {
+                                    b.style.transition = ""
+                                    c.value = "0"
+                                    b.removeEventListener("transitionend", glow4)
+                                }
+                                b.addEventListener("transitionend", glow4)
+                            }
+                            b.addEventListener("transitionend", glow3)
+                        }
+                        b.addEventListener("transitionend", glow2)
+                    }
+                    b.addEventListener("transitionend", glow)
+                } else if (b.firstChild.getAttribute("src") == "1life.png" && c.getAttribute("value") != "1" &&
+                    b.style.transition != "opacity 1s ease 0s") {
+                    alert("Don't give up, you can do it!")
+                    window.location.reload()
+                }
+            }
+        }
         setInterval(fall, 1)
     }
     setInterval(enemy, 1500)
@@ -37,7 +98,7 @@ window.onload = () => {
             let enemy = document.getElementsByClassName("enemy")
             c.style.bottom = (parseFloat(c.style.bottom) + 6) + "px"
             for (let x of enemy) {
-                if ((parseFloat(x.style.top) + parseFloat(c.style.bottom) + 120) >= window.innerHeight && (c.offsetLeft >= x.offsetLeft - 20 && c.offsetLeft <= x.offsetLeft + 70)) {
+                if ((parseFloat(x.style.top) + parseFloat(c.style.bottom) + 120 >= window.innerHeight && parseFloat(x.style.top) <= window.innerHeight - 45) && (c.offsetLeft >= x.offsetLeft - 20 && c.offsetLeft <= x.offsetLeft + 70)) {
                     if (x.style.opacity == 0.5) document.body.removeChild(x)
                     else x.style.opacity = 0.5
                     document.body.removeChild(c)

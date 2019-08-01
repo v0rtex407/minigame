@@ -9,20 +9,32 @@ body {
     height: 90px;
     bottom: 30px;
     touch-action: manipulation;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .laser {
-    position:fixed;
-    left:calc(50% - 10px);
-    background-color:red;
-    width:20px;
-    height:60px;
-    z-index:-2
+    position: fixed;
+    left: calc(50% - 10px);
+    background-color: red;
+    width: 20px;
+    height: 60px;
+    z-index: -2;
+    touch-action: manipulation;
 }
 
 .enemy {
-    position:fixed;
-    background-color:blue;
-    width:70px;
-    height:70px;
+    position: fixed;
+    background-color: blue;
+    width: 70px;
+    height: 70px;
+    touch-action: manipulation;
+}
+
+img[src="3lives.png"],
+img[src="2lives.png"],
+img[src="1life.png"] {
+    width: 35px;
+    filter: drop-shadow(0px 0px 1px black) drop-shadow(0px 0px 1px black) drop-shadow(0px 0px 1px black) drop-shadow(0px 0px 1px black);
 }
