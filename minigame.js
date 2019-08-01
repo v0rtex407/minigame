@@ -2,6 +2,7 @@ window.onload = () => {
     let b = document.getElementById("ship")
     window.onmousemove = e => b.style.left = (e.pageX - 25) + "px"
     window.ontouchmove = e => {
+        e.preventDefault()
         b.style.transition = ""
         b.style.left = (e.pageX - 25) + "px"
     }
