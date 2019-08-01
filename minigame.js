@@ -3,17 +3,24 @@ window.onload = () => {
     window.onmousemove = e => b.style.left = (e.pageX - 25) + "px"
     window.ontouchmove = e => {
         if (b.style.transition == "opacity 1s ease 0s, left 0.07s linear 0s" || b.style.transition == "left 0.07s linear 0s, opacity 1s ease 0s" || b.style.transition == "opacity 1s ease 0s") b.style.transition = "opacity 1s ease 0s"
-        else b.style.transition = ""
+        else if (b.style.transition == "left 0.07s linear 0s") b.style.transition = ""
         b.style.left = (e.pageX - 25) + "px"
     }
     window.ontouchstart = e => {
         b.style.left = (e.pageX - 25) + "px"
-        if (b.style.transition == "opacity 1s ease 0s") b.style.transition = "opacity 1s ease 0s, left 0.07s linear 0s"
-        else if (b.style.transition == "") b.style.transition = "left 0.07s linear 0s"
+        if (b.style.transition == "opacity 1s ease 0s" || b.style.transition == "opacity 1s ease 0s, left 0.07s linear 0s" || b.style.transition == "left 0.07s linear 0s, opacity 1s ease 0s") {
+            b.style.transition = "left 0.07s linear 0s, opacity 1s ease 0s"
+        } else if (b.style.transition == "") {
+            b.style.transition = "left 0.07s linear 0s"
+        }
+        let h = setInterval(() => {
+            if (b.style.transition == "left 0.07s linear 0s") b.style.transition = ""
+            else if (b.style.transition == "left 0.07s linear 0s, opacity 1s ease 0s") b.style.transition = "opacity 1s ease 0s"
+            clearInterval(h)
+        }, 70)
     }
     b.oncontextmenu = e => e.preventDefault()
     b.firstChild.oncontextmenu = e => e.preventDefault()
-    window.oncontextmenu = e => e.preventDefault()
     let slot = ["16.66% - 58.33px", "33.32% - 46.66px", "49.98% - 34.99px", "66.64% - 23.32px", "83.3% - 11.65px"]
     let track = []
     const enemy = () => {
@@ -27,7 +34,7 @@ window.onload = () => {
         track.push(y)
         const fall = () => {
             c.style.top = (parseFloat(c.style.top) + 1.2) + "px";
-            if ((b.offsetTop <= c.offsetTop + 70 && b.offsetTop + 90 >= c.offsetTop) && (b.offsetLeft >= c.offsetLeft - 50 && b.offsetLeft <= c.offsetLeft + 70) && c.getAttribute("value") != "1" && b.style.transition != "opacity 1s ease 0s") {
+            if ((b.offsetTop <= c.offsetTop + 70 && b.offsetTop + 90 >= c.offsetTop) && (b.offsetLeft >= c.offsetLeft - 50 && b.offsetLeft <= c.offsetLeft + 70) && c.getAttribute("value") != "1" && b.style.transition != "opacity 1s ease 0s" && b.style.transition != "left 0.07s linear 0s, opacity 1s ease 0s") {
                 if (b.firstChild.getAttribute("src") == "3lives.png") b.firstChild.src = "2lives.png";
                 else if (b.firstChild.getAttribute("src") == "2lives.png") b.firstChild.src = "1life.png"
                 else if (b.firstChild.getAttribute("src") == "1life.png") {
