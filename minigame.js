@@ -3,6 +3,12 @@ window.onload = () => {
     window.onmousemove = e => b.style.left = (e.pageX - 25) + "px"
     const touchmove = e => {
         b.style.left = (e.pageX - 25) + "px"
+        const moveShi = () => {
+            if (b.style.transition == "left 0.07s linear 0s") b.style.transition = ""
+            else if (b.style.transition == "opacity 1s ease 0s, left 0.07s linear 0s" || b.style.transition == "left 0.07s linear 0s, opacity 1s ease 0s") b.style.transition = "opacity 1s ease 0s"
+            b.removeEventListener("transitionend", moveShi)
+        }
+        b.addEventListener("transitionend", moveShi, true)
     }
     window.addEventListener("touchmove", touchmove, true)
     window.ontouchstart = e => {
