@@ -9,10 +9,12 @@ window.onload = () => {
         b.style.left = (e.pageX - 25) + "px"
         if (b.style.transition == "") b.style.transition = "left 0.07s linear 0s"
         else if (b.style.transition == "opacity 1s ease 0s") b.style.transition = "opacity 1s ease 0s, left 0.07s linear 0s"
-        window.ontransitionend = e => {
+        const moveShip = () => {
             if (b.style.transition == "left 0.07s linear 0s") b.style.transition = ""
             else if (b.style.transition == "opacity 1s ease 0s, left 0.07s linear 0s" || b.style.transition == "left 0.07s linear 0s, opacity 1s ease 0s") b.style.transition = "opacity 1s ease 0s"
+            b.removeEventListener("transitionend", moveShip)
         }
+        b.addEventListener("transitionend", moveShip)
     }
     b.oncontextmenu = e => e.preventDefault()
     b.firstChild.oncontextmenu = e => e.preventDefault()
