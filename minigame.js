@@ -1,5 +1,6 @@
 window.onload = () => {
     let b = document.getElementById("ship")
+    let score = 0
     window.onmousemove = e => b.style.left = (e.pageX - 25) + "px"
     window.ontouchmove = e => {
         if (b.style.transition == "opacity 0.75s ease 0s, left 0.07s linear 0s" || b.style.transition == "left 0.07s linear 0s, opacity 0.75s ease 0s" || b.style.transition == "opacity 0.75s ease 0s") b.style.transition = "opacity 0.75s ease 0s"
@@ -38,7 +39,7 @@ window.onload = () => {
                 if (b.firstChild.getAttribute("src") == "3lives.png") b.firstChild.src = "2lives.png";
                 else if (b.firstChild.getAttribute("src") == "2lives.png") b.firstChild.src = "1life.png"
                 else if (b.firstChild.getAttribute("src") == "1life.png") {
-                    alert("Don't give up, you can do it!")
+                    alert(`Don't give up, you can do it!\nYou killed ${score} blocks!`)
                     window.location.reload()
                 }
                 c.setAttribute("value", "1")
@@ -87,6 +88,7 @@ window.onload = () => {
                     if (x.style.opacity == 0.5) document.body.removeChild(x)
                     else x.style.opacity = 0.5
                     document.body.removeChild(c)
+                    score += 1
                     clearInterval(t)
                 }
             }
