@@ -2,20 +2,20 @@ window.onload = () => {
     let b = document.getElementById("ship")
     window.onmousemove = e => b.style.left = (e.pageX - 25) + "px"
     window.ontouchmove = e => {
-        if (b.style.transition == "opacity 1s ease 0s, left 0.07s linear 0s" || b.style.transition == "left 0.07s linear 0s, opacity 1s ease 0s" || b.style.transition == "opacity 1s ease 0s") b.style.transition = "opacity 1s ease 0s"
+        if (b.style.transition == "opacity 0.75s ease 0s, left 0.07s linear 0s" || b.style.transition == "left 0.07s linear 0s, opacity 0.75s ease 0s" || b.style.transition == "opacity 0.75s ease 0s") b.style.transition = "opacity 0.75s ease 0s"
         else if (b.style.transition == "left 0.07s linear 0s") b.style.transition = ""
         b.style.left = (e.pageX - 25) + "px"
     }
     window.ontouchstart = e => {
         b.style.left = (e.pageX - 25) + "px"
-        if (b.style.transition == "opacity 1s ease 0s" || b.style.transition == "opacity 1s ease 0s, left 0.07s linear 0s" || b.style.transition == "left 0.07s linear 0s, opacity 1s ease 0s") {
-            b.style.transition = "left 0.07s linear 0s, opacity 1s ease 0s"
+        if (b.style.transition == "opacity 0.75s ease 0s" || b.style.transition == "opacity 0.75s ease 0s, left 0.07s linear 0s" || b.style.transition == "left 0.07s linear 0s, opacity 0.75s ease 0s") {
+            b.style.transition = "left 0.07s linear 0s, opacity 0.75s ease 0s"
         } else if (b.style.transition == "") {
             b.style.transition = "left 0.07s linear 0s"
         }
         let h = setInterval(() => {
             if (b.style.transition == "left 0.07s linear 0s") b.style.transition = ""
-            else if (b.style.transition == "left 0.07s linear 0s, opacity 1s ease 0s") b.style.transition = "opacity 1s ease 0s"
+            else if (b.style.transition == "left 0.07s linear 0s, opacity 0.75s ease 0s") b.style.transition = "opacity 0.75s ease 0s"
             clearInterval(h)
         }, 70)
     }
@@ -34,7 +34,7 @@ window.onload = () => {
         track.push(y)
         const fall = () => {
             c.style.top = (parseFloat(c.style.top) + 1.2) + "px";
-            if ((((b.offsetTop <= c.offsetTop + 70 && b.offsetTop + 90 >= c.offsetTop) && (b.offsetLeft >= c.offsetLeft - 50 && b.offsetLeft <= c.offsetLeft + 70)) || c.offsetTop >= window.innerHeight - 45) && c.getAttribute("value") != "1" && b.style.transition != "opacity 1s ease 0s" && b.style.transition != "left 0.07s linear 0s, opacity 1s ease 0s") {
+            if ((((b.offsetTop <= c.offsetTop + 70 && b.offsetTop + 90 >= c.offsetTop) && (b.offsetLeft >= c.offsetLeft - 50 && b.offsetLeft <= c.offsetLeft + 70)) || c.offsetTop >= window.innerHeight - 45) && c.getAttribute("value") != "1" && b.style.transition != "opacity 0.75s ease 0s" && b.style.transition != "left 0.07s linear 0s, opacity 0.75s ease 0s") {
                 if (b.firstChild.getAttribute("src") == "3lives.png") b.firstChild.src = "2lives.png";
                 else if (b.firstChild.getAttribute("src") == "2lives.png") b.firstChild.src = "1life.png"
                 else if (b.firstChild.getAttribute("src") == "1life.png") {
@@ -42,8 +42,8 @@ window.onload = () => {
                     window.location.reload()
                 }
                 c.setAttribute("value", "1")
-                if (b.style.transition == "") b.style.transition = "opacity 1s ease 0s"
-                else if (b.style.transition == "left 0.07s linear 0s") b.style.transition = "left 0.07s linear 0s, opacity 1s ease 0s"
+                if (b.style.transition == "") b.style.transition = "opacity 0.75s ease 0s"
+                else if (b.style.transition == "left 0.07s linear 0s") b.style.transition = "left 0.07s linear 0s, opacity 0.75s ease 0s"
                 b.style.opacity = "0.5"
                 const glow = () => {
                     b.style.opacity = "1"
