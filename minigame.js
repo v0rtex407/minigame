@@ -85,10 +85,11 @@ window.onload = () => {
             c.style.bottom = (parseFloat(c.style.bottom) + 6) + "px"
             for (let x of enemy) {
                 if ((parseFloat(x.style.top) + parseFloat(c.style.bottom) + 120 >= window.innerHeight && parseFloat(x.style.top) <= window.innerHeight - 45) && (c.offsetLeft >= x.offsetLeft - 20 && c.offsetLeft <= x.offsetLeft + 70)) {
-                    if (x.style.opacity == 0.5) document.body.removeChild(x)
-                    else x.style.opacity = 0.5
+                    if (x.style.opacity == 0.5) {
+                        document.body.removeChild(x)
+                        score += 1
+                    } else x.style.opacity = 0.5
                     document.body.removeChild(c)
-                    score += 1
                     clearInterval(t)
                 }
             }
