@@ -57,7 +57,7 @@ window.onload = () => {
                             b.removeEventListener("transitionend", glow3)
                             const glow4 = () => {
                                 b.style.transition = ""
-                                c.value = "0"
+                                c.setAttribute("value", "0")
                                 b.removeEventListener("transitionend", glow4)
                             }
                             b.addEventListener("transitionend", glow4)
