@@ -35,7 +35,7 @@ window.onload = () => {
         track.push(y)
         const fall = () => {
             c.style.top = (parseFloat(c.style.top) + 1.2) + "px";
-            if ((((b.offsetTop <= c.offsetTop + 70 && b.offsetTop + 90 >= c.offsetTop) && (b.offsetLeft >= c.offsetLeft - 50 && b.offsetLeft <= c.offsetLeft + 70)) || c.offsetTop >= window.innerHeight - 45) && c.getAttribute("value") != "1" && b.style.transition != "opacity 0.75s ease 0s" && b.style.transition != "left 0.07s linear 0s, opacity 0.75s ease 0s") {
+            if ((((b.offsetTop <= c.offsetTop + 70) && (b.offsetLeft >= c.offsetLeft - 50 && b.offsetLeft <= c.offsetLeft + 70)) || c.offsetTop >= window.innerHeight - 45) && c.getAttribute("value") != "1" && b.style.transition != "opacity 0.75s ease 0s" && b.style.transition != "left 0.07s linear 0s, opacity 0.75s ease 0s") {
                 if (b.firstChild.getAttribute("src") == "3lives.png") b.firstChild.src = "2lives.png";
                 else if (b.firstChild.getAttribute("src") == "2lives.png") b.firstChild.src = "1life.png"
                 else if (b.firstChild.getAttribute("src") == "1life.png") {
