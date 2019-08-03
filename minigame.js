@@ -34,9 +34,9 @@ window.onload = () => {
         c.style.left = `calc(${y})`
         track.push(y)
         const fall = () => {
-            if (parseFloat(c.style.top) >= window.innerHeight + (window.matchMedia("(max-device-width: 1000px)").matches ? 0 : 40)) document.body.removeChild(c)
+            if (parseFloat(c.style.top) >= window.innerHeight + 40) document.body.removeChild(c)
             c.style.top = (parseFloat(c.style.top) + 1.2) + "px";
-            if ((((b.offsetTop <= parseFloat(c.style.top) + 70) && (b.offsetLeft >= c.offsetLeft - 50 && b.offsetLeft <= c.offsetLeft + 70)) || parseFloat(c.style.top) >= window.innerHeight - 45) && c.getAttribute("value") != "1" && b.style.transition != "opacity 0.75s ease 0s" && b.style.transition != "left 0.05s linear 0s, opacity 0.75s ease 0s") {
+            if ((((b.offsetTop <= c.offsetTop + 70) && (b.offsetLeft >= c.offsetLeft - 50 && b.offsetLeft <= c.offsetLeft + 70)) || c.offsetTop >= window.innerHeight - 45) && c.getAttribute("value") != "1" && b.style.transition != "opacity 0.75s ease 0s" && b.style.transition != "left 0.05s linear 0s, opacity 0.75s ease 0s") {
                 if (b.firstChild.getAttribute("src") == "3lives.png") b.firstChild.src = "2lives.png";
                 else if (b.firstChild.getAttribute("src") == "2lives.png") b.firstChild.src = "1life.png"
                 else if (b.firstChild.getAttribute("src") == "1life.png") {
