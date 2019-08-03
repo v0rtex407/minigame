@@ -102,10 +102,14 @@ window.onload = () => {
     }
     setInterval(laser, 600)
     let visibility = undefined
-    document.onvisibilitychange = () => {
-        if (visibility == undefined) {
-            visibility = 1
-            visibility = alert("The blocks are getting stronger, hurry up!")
+    window.onblur = () => {
+        const switchTab = () => {
+            if (visibility == undefined) {
+                visibility = 1
+                visibility = alert("The blocks are getting stronger, hurry up!")
+            }
+            document.removeEventListener("visibilitychange", switchTab)
         }
+        document.addEventListener("visibilitychange", switchTab)
     }
 }
