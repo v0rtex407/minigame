@@ -102,7 +102,7 @@ window.onload = () => {
     }
     setInterval(laser, 600)
     let visibility = undefined
-    window.onblur = () => {
+    const focusLost = () => {
         const switchTab = () => {
             if (visibility == undefined) {
                 visibility = 1
@@ -112,4 +112,5 @@ window.onload = () => {
         }
         document.addEventListener("visibilitychange", switchTab)
     }
+    window.addEventListener("blur", focusLost)
 }
