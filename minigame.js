@@ -34,8 +34,9 @@ window.onload = () => {
         c.style.left = `calc(${y})`
         track.push(y)
         const fall = () => {
+            if (parseFloat(c.style.top) >= window.innerHeight + 40) document.body.removeChild(c)
             c.style.top = (parseFloat(c.style.top) + 1.2) + "px";
-            if ((((b.offsetTop <= c.offsetTop + 70) && (b.offsetLeft >= c.offsetLeft - 50 && b.offsetLeft <= c.offsetLeft + 70)) || c.offsetTop >= window.innerHeight - 45) && c.getAttribute("value") != "1" && b.style.transition != "opacity 0.75s ease 0s" && b.style.transition != "left 0.07s linear 0s, opacity 0.75s ease 0s") {
+            if ((((b.offsetTop <= parseFloat(c.style.top) + 70) && (b.offsetLeft >= c.offsetLeft - 50 && b.offsetLeft <= c.offsetLeft + 70)) || parseFloat(c.style.top) >= window.innerHeight - 45) && c.getAttribute("value") != "1" && b.style.transition != "opacity 0.75s ease 0s" && b.style.transition != "left 0.07s linear 0s, opacity 0.75s ease 0s") {
                 if (b.firstChild.getAttribute("src") == "3lives.png") b.firstChild.src = "2lives.png";
                 else if (b.firstChild.getAttribute("src") == "2lives.png") b.firstChild.src = "1life.png"
                 else if (b.firstChild.getAttribute("src") == "1life.png") {
@@ -68,7 +69,6 @@ window.onload = () => {
                 }
                 b.addEventListener("transitionend", glow)
             }
-            if (c.offsetTop >= window.innerHeight) document.body.removeChild(c)
         }
         setInterval(fall, 1)
     }
@@ -102,15 +102,10 @@ window.onload = () => {
     }
     setInterval(laser, 600)
     let visibility = undefined
-    const focusLost = () => {
-        const switchTab = () => {
-            if (visibility == undefined) {
-                visibility = 1
-                visibility = alert("The blocks are getting stronger, hurry up!")
-            }
-            document.removeEventListener("visibilitychange", switchTab)
+    document.onvisibilitychange = () => {
+        if (visibility == undefined) {
+            visibility = 1
+            visibility = alert("The blocks are getting stronger, hurry up!")
         }
-        document.addEventListener("visibilitychange", switchTab)
     }
-    window.addEventListener("blur", focusLost)
 }
