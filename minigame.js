@@ -102,13 +102,10 @@ window.onload = () => {
     }
     setInterval(laser, 600)
     let visibility = undefined
-    if (window.matchMedia("max-device-width:1000px").matches) window.onblur = () => alert("The blocks are getting stronger, hurry up!")
-    else {
-        document.onvisibilitychange = () => {
-            if (visibility == undefined) {
-                visibility = 1
-                visibility = alert("The blocks are getting stronger, hurry up!")
-            }
+    if (!window.matchMedia("max-device-width:1000px").matches) document.onvisibilitychange = () => {
+        if (visibility == undefined) {
+            visibility = 1
+            visibility = alert("The blocks are getting stronger, hurry up!")
         }
     }
 }
