@@ -8,7 +8,6 @@ window.onload = () => {
         b.style.left = (e.pageX - 25) + "px"
     }
     window.ontouchstart = e => {
-        e.preventDefault()
         b.style.left = (e.pageX - 25) + "px"
         if (b.style.transition == "opacity 0.625s ease 0s" || b.style.transition == "opacity 0.625s ease 0s, left 0.05s linear 0s" || b.style.transition == "left 0.05s linear 0s, opacity 0.625s ease 0s") {
             b.style.transition = "left 0.05s linear 0s, opacity 0.625s ease 0s"
@@ -23,7 +22,6 @@ window.onload = () => {
     }
     b.oncontextmenu = e => e.preventDefault()
     b.firstChild.oncontextmenu = e => e.preventDefault()
-    window.oncontextmenu = e => e.preventDefault()
     let slot = ["16.66% - 58.33px", "33.32% - 46.66px", "49.98% - 34.99px", "66.64% - 23.32px", "83.3% - 11.65px"]
     let track = []
     const enemy = () => {
@@ -103,4 +101,14 @@ window.onload = () => {
         let t = setInterval(move, 1)
     }
     setInterval(laser, 600)
+    let visibility = undefined
+    if (window.matchMedia("max-device-width:1000px").matches) window.onblur = () => alert("The blocks are getting stronger, hurry up!")
+    else {
+        document.onvisibilitychange = () => {
+            if (visibility == undefined) {
+                visibility = 1
+                visibility = alert("The blocks are getting stronger, hurry up!")
+            }
+        }
+    }
 }
