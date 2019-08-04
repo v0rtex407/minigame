@@ -22,6 +22,7 @@ window.onload = () => {
     }
     b.oncontextmenu = e => e.preventDefault()
     b.firstChild.oncontextmenu = e => e.preventDefault()
+    window.oncontextmenu = e => e.preventDefault()
     let slot = ["16.66% - 58.33px", "33.32% - 46.66px", "49.98% - 34.99px", "66.64% - 23.32px", "83.3% - 11.65px"]
     let track = []
     const enemy = () => {
