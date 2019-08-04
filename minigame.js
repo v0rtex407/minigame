@@ -46,6 +46,7 @@ window.onload = () => {
                 c.setAttribute("value", "1")
                 if (b.style.transition == "") b.style.transition = "opacity 0.625s ease 0s"
                 else if (b.style.transition == "left 0.05s linear 0s") b.style.transition = "left 0.05s linear 0s, opacity 0.625s ease 0s"
+                window.navigator.vibrate(200)
                 b.style.opacity = "0.5"
                 const glow = () => {
                     b.style.opacity = "1"
