@@ -101,4 +101,11 @@ window.onload = () => {
         let t = setInterval(move, 1)
     }
     setInterval(laser, 600)
+    let visibility = undefined
+    document.onvisibilitychange = () => {
+        if (visibility == undefined) {
+            visibility = 1
+            visibility = alert("The blocks are getting stronger, hurry up!")
+        }
+    }
 }
