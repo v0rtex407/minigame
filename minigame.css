@@ -12,6 +12,7 @@ body {
     height: 90px;
     bottom: 30px;
     touch-action: none;
+    pointer-events: none;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -28,6 +29,7 @@ body {
     height: 60px;
     z-index: -2;
     touch-action: none;
+    pointer-events: none;
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
