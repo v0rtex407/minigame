@@ -8,6 +8,7 @@ window.onload = () => {
         b.style.left = (e.pageX - 25) + "px"
     }
     window.ontouchstart = e => {
+        e.preventDefault()
         b.style.left = (e.pageX - 25) + "px"
         if (b.style.transition == "opacity 0.625s ease 0s" || b.style.transition == "opacity 0.625s ease 0s, left 0.05s linear 0s" || b.style.transition == "left 0.05s linear 0s, opacity 0.625s ease 0s") {
             b.style.transition = "left 0.05s linear 0s, opacity 0.625s ease 0s"
