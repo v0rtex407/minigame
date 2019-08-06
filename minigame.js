@@ -1,7 +1,7 @@
 window.onload = () => {
     let b = document.getElementById("ship")
     let score = 0
-    let soundtrack = new Audio("block.wav")
+    let soundtrack = new Audio("block.mp3")
     soundtrack.loop = "true"
     soundtrack.play()
     window.onmousemove = e => b.style.left = (e.pageX - 25) + "px"
