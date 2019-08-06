@@ -1,9 +1,10 @@
 window.onload = () => {
     let b = document.getElementById("ship")
     let score = 0
-    let soundtrack = new Audio("block.wav")
-    soundtrack.loop = "true"
-    soundtrack.play()
+    let l1Music = new Audio("block.wav")
+    l1Music.loop = "true"
+    l1Music.play()
+    let death = new Audio("death.wav")
     window.onmousemove = e => b.style.left = (e.pageX - 25) + "px"
     window.ontouchmove = e => {
         if (b.style.transition == "opacity 0.625s ease 0s, left 0.05s linear 0s" || b.style.transition == "left 0.05s linear 0s, opacity 0.625s ease 0s" || b.style.transition == "opacity 0.625s ease 0s") b.style.transition = "opacity 0.625s ease 0s"
@@ -43,6 +44,9 @@ window.onload = () => {
                 if (b.firstChild.getAttribute("src") == "3lives.png") b.firstChild.src = "2lives.png";
                 else if (b.firstChild.getAttribute("src") == "2lives.png") b.firstChild.src = "1life.png"
                 else if (b.firstChild.getAttribute("src") == "1life.png") {
+                    l1Music.pause()
+                    l1Music.currentTime = 0
+                    death.play()
                     alert(`Don't give up, you can do it!\nYou killed ${score} blocks!`)
                     window.location.reload()
                 }
@@ -105,10 +109,12 @@ window.onload = () => {
     }
     setInterval(laser, 600)
     let visibility = undefined
-    if (!window.matchMedia("(max-device-width:1000px)").matches) document.onvisibilitychange = () => {
+    if (!window.matchMedia("(max-device-width:1000px)").matches) {
+        document.onvisibilitychange = () => {
             if (visibility == undefined) {
                 visibility = 1
                 visibility = alert("The blocks are getting stronger, hurry up!")
             }
         }
+    }
 }
