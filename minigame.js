@@ -1,6 +1,9 @@
 window.onload = () => {
     let b = document.getElementById("ship")
     let score = 0
+    let soundtrack = new Audio("block.wav")
+    soundtrack.loop = "true"
+    soundtrack.play()
     window.onmousemove = e => b.style.left = (e.pageX - 25) + "px"
     window.ontouchmove = e => {
         if (b.style.transition == "opacity 0.625s ease 0s, left 0.05s linear 0s" || b.style.transition == "left 0.05s linear 0s, opacity 0.625s ease 0s" || b.style.transition == "opacity 0.625s ease 0s") b.style.transition = "opacity 0.625s ease 0s"
